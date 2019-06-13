@@ -18,8 +18,8 @@ CMD ["/entrypoint.sh", "-fg"]
 ENTRYPOINT ["/tini", "--"]
 
 RUN apt-get update \
-	&& apt-get install -y --no-install-recommends fontconfig git perl \
-	&& apt-get clean autoclean && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
+    && apt-get install -y --no-install-recommends fontconfig git perl \
+    && apt-get clean autoclean && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
 
 ARG TINI_VERSION=v0.18.0
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
@@ -27,7 +27,7 @@ RUN chmod +x /tini
 
 COPY entrypoint.sh             				/entrypoint.sh
 
-ARG BITBUCKET_VERSION=6.3.0
+ARG BITBUCKET_VERSION=6.3.2
 ARG DOWNLOAD_URL=https://product-downloads.atlassian.com/software/stash/downloads/atlassian-bitbucket-${BITBUCKET_VERSION}.tar.gz
 
 RUN mkdir -p                             	${BITBUCKET_INSTALL_DIR} \
